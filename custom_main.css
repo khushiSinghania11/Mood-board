@@ -1,0 +1,52 @@
+body{
+    background-color: pink;
+}
+
+h1{
+    padding-left:420px;
+    font-size: 40px;
+    text-shadow: 8px 8px 32px #810606;
+	color: #ffffff;
+}
+
+p,h2{
+    margin-top:100px;
+    font-size:30px;
+    font-weight:800;
+    color:maroon;
+    padding-left:465px;
+}
+
+form{
+    padding-left:465px;
+}
+
+label{
+    font-size:25px;
+    font-weight:500;
+}
+
+#search{
+    width:190px;
+    height:25px;
+}
+
+#search-btn,#done-btn{
+    width: 80px;
+    height:30px;
+    padding:2px;
+    color:white;
+    background-color: maroon;
+}
+
+#search-btn:hover{
+    cursor: pointer;
+}
+
+#done-btn:hover{
+    cursor:pointer;
+}
+
+#done-btn{
+    margin-left:465px;
+}

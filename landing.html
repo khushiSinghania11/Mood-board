@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+    <div class="div1">    <h3>Here is your mood board!</h3></div>
+    <div class="div2">
+    <main id="selected-images"> 
+    </main>
+    <div class="nav">
+        <button onclick="goPrev()">
+            Prev
+        </button>
+        <button onclick="goNext()">
+            Next
+        </button>
+    </div>
+    </div>
+    <script>
+
+        const selectedImages = JSON.parse(localStorage.getItem("selectedImages")) || [];
+        const list = document.getElementById("selected-images");
+        selectedImages.forEach(url => {
+        const img = document.createElement("img");
+        img.src = url;
+        img.classList.add("slide");
+        list.appendChild(img);
+      });
+
+
+        const slides = document.querySelectorAll(".slide")
+        var counter = 0;
+        slides.forEach(
+            (slide, index) => {
+                slide.style.left = `${index * 100}%`
+            }   
+        )
+
+        const goPrev = () => {
+            counter--
+            slideImage()
+        }
+
+        const goNext = () => {
+            counter++
+            slideImage()
+        }
+
+        const slideImage = () => {
+            slides.forEach(
+                (slide) => {
+                slide.style.transform = `translateX(-${counter * 100}%)`
+                }
+            )
+        }
+        
+
+        localStorage.removeItem("selectedImages");
+    </script>
+</body>
+
+</html>

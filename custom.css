@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: pink;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.div1{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-size: 30px;
+    text-shadow: 4px 4px 8px #810606;
+	color: #ffffff;
+}
+
+main {
+    width: 800px;
+    height: 500px;
+    position:relative;
+    box-shadow: 0px 2px 5px rgb(228, 72, 72);
+    overflow:hidden;
+}
+
+.slide {
+    width: 800px;
+    height: 500px;
+    transition: 1s;
+    position: absolute;
+
+}
+
+.nav {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.nav button {
+    font-size: 25px;
+    padding:5px;
+    border-radius: 5px;
+    width:20%;
+    border-color: rgb(228, 72, 72);
+    background-color: palevioletred;
+    color:white;
+}
+
+.nav button:hover{
+    cursor:pointer;
+    color:maroon;
+    background-color: pink;
+    transition: 0.5s;
+}
+

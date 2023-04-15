@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mood Board</title>
+    <link rel="stylesheet" href="custom_main.css">
+  </head>
+  <body>
+    <h1>Make Your Own Mood Board</h1>
+    <p>
+      Select your favourite aesthetics!
+    </p>
+    <form>
+      <label for="search">Search Images:</label>
+      <input type="text" id="search" name="search">
+      <button id="search-btn" type="button" onclick="searchImages()">Search</button>
+    </form>
+    <div id="results"></div>
+    <h2>Selected Images:</h2>
+    <ul id="selected-images"></ul>
+    <button id="done-btn" onclick="goToNextPage()">Done</button>
+    <script>
+      function searchImages() {
+        const query = document.getElementById("search").value;
+        const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=cO3sEP47Mv2dqmpAc4bDBG4o8fCO8f504OX2OY0J1gc`;
+        fetch(url)
+          .then(response => response.json())
+          .then(data => displayResults(data.results))
+          .catch(error => console.error(error));
+      }
+
+      function displayResults(results) {
+        const images = document.getElementById("results");
+        images.innerHTML = "";
+        results.forEach(result => {
+          const img = document.createElement("img");
+          img.src = result.urls.thumb;
+          img.onclick = () => selectImage(result.urls.full);
+          images.appendChild(img);
+        });
+      }
+
+      function selectImage(url) {
+        const list = document.getElementById("selected-images");
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.textContent = url;
+        li.appendChild(a);
+        list.appendChild(li);
+        const selectedImages = JSON.parse(localStorage.getItem("selectedImages")) || [];
+        selectedImages.push(url);
+        localStorage.setItem("selectedImages", JSON.stringify(selectedImages));
+      }
+
+      function goToNextPage() {
+        window.location.href = "landing.html";
+      }
+    </script>
+  </body>
+</html>
